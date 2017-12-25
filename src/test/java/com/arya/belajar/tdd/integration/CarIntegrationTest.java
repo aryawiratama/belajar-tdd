@@ -1,5 +1,6 @@
 package com.arya.belajar.tdd.integration;
 
+import com.arya.belajar.tdd.domain.Car;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
