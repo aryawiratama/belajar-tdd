@@ -1,5 +1,6 @@
 package com.arya.belajar.tdd.controller;
 
+import com.arya.belajar.tdd.CarNotFoundException;
 import com.arya.belajar.tdd.domain.Car;
 import com.arya.belajar.tdd.service.CarService;
 import org.junit.Test;
@@ -32,5 +33,13 @@ public class CarControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("name").value("Jazz"))
                 .andExpect(jsonPath("type").value("City Car"));
+    }
+
+    @Test
+    public void getCar_NotFound()throws Exception{
+        given(carService.findCar(anyString())).willThrow(new CarNotFoundException());
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/cars/jazz"))
+                .andExpect(status().isNotFound());
     }
 }
