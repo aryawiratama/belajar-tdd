@@ -7,6 +7,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface CarRepository extends PagingAndSortingRepository<Car, String>{
 
-    @Query("SELECT c FROM Car c WHERE c.name=: name")
+    @Query("SELECT c FROM Car c WHERE c.name=:name")
     Car findByName(@Param("name") String name);
 }
