@@ -23,10 +23,11 @@ public class CarIntegrationTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void testGetCar_ShouldReturnCar()throws Exception{
+    public void testGetCar_ShouldReturnCar()throws Exception {
         ResponseEntity<Car> response = restTemplate.getForEntity("/cars/jazz", Car.class);
 
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
         assertThat(response.getBody().getName(), equalToIgnoringCase("Jazz"));
         assertThat(response.getBody().getType(), equalToIgnoringCase("City Car"));
+    }
 }
